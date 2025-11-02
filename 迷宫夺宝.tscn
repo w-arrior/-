@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpm8eiuady0ma"]
+
+[ext_resource type="Script" path="res://迷宫夺宝.gd" id="1_3pmn5"]
+[ext_resource type="Texture2D" uid="uid://dlamqwv0mgtcp" path="res://第5课资源/迷宫.png" id="1_qwepp"]
+[ext_resource type="PackedScene" uid="uid://bhwtqnmwll42d" path="res://魔法棒模块.tscn" id="2_st6fa"]
+[ext_resource type="PackedScene" uid="uid://dfohvme5l734a" path="res://钥匙模块.tscn" id="3_xtut2"]
+[ext_resource type="PackedScene" uid="uid://bp0r7f1bni53s" path="res://小猫模块.tscn" id="5_30k8w"]
+[ext_resource type="Texture2D" uid="uid://bakpq7gohtl6e" path="res://第5课资源/胜利.png" id="6_8ccsd"]
+
+[node name="迷宫夺宝" type="Node2D"]
+script = ExtResource("1_3pmn5")
+
+[node name="背景" type="Sprite2D" parent="."]
+texture = ExtResource("1_qwepp")
+centered = false
+
+[node name="魔法棒模块1" parent="." instance=ExtResource("2_st6fa")]
+position = Vector2(275, 532)
+
+[node name="魔法棒模块2" parent="." instance=ExtResource("2_st6fa")]
+position = Vector2(678, 235)
+
+[node name="钥匙模块" parent="." instance=ExtResource("3_xtut2")]
+position = Vector2(851, 658)
+
+[node name="小猫模块" parent="." instance=ExtResource("5_30k8w")]
+position = Vector2(103, 111)
+scale = Vector2(0.5, 0.5)
+
+[node name="AreaWall" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaWall"]
+position = Vector2(14, 15)
+polygon = PackedVector2Array(2, 3, 190, 3, 190, 529, 346, 530, 347, 3, 927, 4, 928, 692, 741, 692, 742, 205, 577, 206, 577, 691, 1, 691, 3, 13, -13, 13, -14, 705, 945, 705, 946, -15, -14, -15)
+
+[node name="游戏结束提示牌" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(479, 352)
+texture = ExtResource("6_8ccsd")
+
+[connection signal="gameOver" from="小猫模块" to="." method="_on_cat_game_over"]
+[connection signal="goBack" from="小猫模块" to="." method="_on_cat_go_back"]

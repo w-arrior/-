@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfohvme5l734a"]
+
+[ext_resource type="Script" path="res://钥匙模块.gd" id="1_arhtu"]
+[ext_resource type="Texture2D" uid="uid://1hivdm06d68l" path="res://第5课资源/钥匙.png" id="2_fkf6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o404"]
+size = Vector2(161, 74)
+
+[node name="钥匙模块" type="Node2D"]
+script = ExtResource("1_arhtu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fkf6s")
+
+[node name="AreaKey" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaKey"]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_5o404")
+
+[connection signal="area_entered" from="AreaKey" to="." method="_on_key_area_entered"]

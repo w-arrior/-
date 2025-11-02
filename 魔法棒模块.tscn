@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhwtqnmwll42d"]
+
+[ext_resource type="Texture2D" uid="uid://0ot7dvdsfrmo" path="res://第5课资源/魔法棒.png" id="1_3ktni"]
+[ext_resource type="Script" path="res://魔法棒模块.gd" id="1_6mp7b"]
+
+[node name="魔法棒模块" type="Node2D"]
+script = ExtResource("1_6mp7b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3ktni")
+offset = Vector2(70, 0)
+
+[node name="AreaStick" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaStick"]
+polygon = PackedVector2Array(-1, 7, 68, 8, 84, 8, 109, 8, 133, 6, 133, 15, 134, 19, 136, 25, 139, 23, 141, 29, 144, 31, 146, 27, 150, 35, 152, 36, 154, 36, 149, 16, 148, 14, 145, 18, 143, 12, 141, 11, 138, 14, 138, 6, 142, 6, 142, -8, 145, -19, 148, -26, 147, -35, 143, -36, 134, -26, 133, -21, 132, -14, 129, -9, 59.7972, -9, 40.2752, -9, 18.2503, -9, -12, -9, -12, 4, -12, 7)

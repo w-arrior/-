@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp0r7f1bni53s"]
+
+[ext_resource type="Script" path="res://小猫模块.gd" id="1_ajocq"]
+[ext_resource type="Texture2D" uid="uid://4e74wn4cqu67" path="res://第5课资源/猫1.png" id="1_suish"]
+[ext_resource type="Texture2D" uid="uid://dgay0ofcnxidm" path="res://第5课资源/猫2.png" id="2_t815t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghof2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_suish")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t815t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g7bdr"]
+radius = 78.0
+height = 208.0
+
+[node name="小猫模块" type="Node2D"]
+script = ExtResource("1_ajocq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ghof2")
+frame = 1
+frame_progress = 0.75469
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-12, -1)
+shape = SubResource("CapsuleShape2D_g7bdr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_cat_area_entered"]
