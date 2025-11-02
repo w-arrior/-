@@ -1,0 +1,1 @@
+一个godot小项目，并且使用vscode调试gdscript代码
